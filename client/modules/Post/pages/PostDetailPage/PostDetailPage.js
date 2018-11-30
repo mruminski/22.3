@@ -15,7 +15,8 @@ export class PostDetailPage extends React.Component {
     this.state = {
       name: this.props.post.name,
       title: this.props.post.title,
-      content: this.props.post.content
+      content: this.props.post.content,
+      vote: this.props.post.vote
     };
   }
 
@@ -124,6 +125,7 @@ PostDetailPage.propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    vote: PropTypes.number.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired
   }).isRequired,

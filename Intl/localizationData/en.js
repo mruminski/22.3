@@ -27,6 +27,8 @@ export default {
     	  =1 {has # comment}
     	  other {has # comments}
       } as of {date}`,
-    editPost: "Edit Post"
+    editPost: "Edit Post",
+    likePost: "Like Post",
+    dislikePost: "Dislike Post"
   }
 };

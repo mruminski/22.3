@@ -27,6 +27,8 @@ export default {
   		  =1 {has # comment}
   		  other {has # comments}
       } as of {date} (in real app this would be translated to French)`,
-    editPost: "Modifier le message"
+    editPost: "Modifier le message",
+    likePost: "Comme le message",
+    dislikePost: "N'aime pas le message"
   }
 };
