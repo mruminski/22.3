@@ -1,7 +1,7 @@
-import Post from '../models/post';
-import cuid from 'cuid';
-import slug from 'limax';
-import sanitizeHtml from 'sanitize-html';
+import Post from "../models/post";
+import cuid from "cuid";
+import slug from "limax";
+import sanitizeHtml from "sanitize-html";
 
 /**
  * Get all posts
@@ -10,12 +10,14 @@ import sanitizeHtml from 'sanitize-html';
  * @returns void
  */
 export function getPosts(req, res) {
-  Post.find().sort('-dateAdded').exec((err, posts) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-    res.json({ posts });
-  });
+  Post.find()
+    .sort("-dateAdded")
+    .exec((err, posts) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ posts });
+    });
 }
 
 /**
@@ -31,7 +33,6 @@ export function addPost(req, res) {
 
   const newPost = new Post(req.body.post);
 
-  // Let's sanitize inputs
   newPost.title = sanitizeHtml(newPost.title);
   newPost.name = sanitizeHtml(newPost.name);
   newPost.content = sanitizeHtml(newPost.content);
@@ -76,5 +77,14 @@ export function deletePost(req, res) {
     post.remove(() => {
       res.status(200).end();
     });
+  });
+}
+
+export function editPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, res.body.post).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
   });
 }
