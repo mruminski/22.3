@@ -1,8 +1,9 @@
 import { TOGGLE_ADD_POST, TOGGLE_EDIT_POST } from "./AppActions";
 
+// prettier-ignore
 const initialState = {
   showAddPost: false,
-  showEditPost: false
+  showEditPost: false,
 };
 
 const AppReducer = (state = initialState, action) => {
