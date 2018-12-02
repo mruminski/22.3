@@ -29,6 +29,9 @@ export default {
       } as of {date}`,
     editPost: "Edit Post",
     likePost: "Like Post",
-    dislikePost: "Dislike Post"
+    dislikePost: "Dislike Post",
+    home: "Home",
+    posts: "Posts",
+    about: "About"
   }
 };
