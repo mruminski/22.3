@@ -29,6 +29,9 @@ export default {
       } as of {date} (in real app this would be translated to French)`,
     editPost: "Modifier le message",
     likePost: "Comme le message",
-    dislikePost: "N'aime pas le message"
+    dislikePost: "N'aime pas le message",
+    home: "Page d'accueil",
+    posts: "Postes",
+    about: "À propos de moi"
   }
 };

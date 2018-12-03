@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 // Import Style
-import styles from './App.css';
+import styles from "./App.css";
 
 // Import Components
-import Helmet from 'react-helmet';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Helmet from "react-helmet";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
-import { switchLanguage } from '../../modules/Intl/IntlActions';
+import { toggleAddPost } from "./AppActions";
+import { switchLanguage } from "../../modules/Intl/IntlActions";
+import Navigation from "../../../components/Navigation/Navigation";
 
 let DevTools;
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   // eslint-disable-next-line global-require
-  DevTools = require('./components/DevTools').default;
+  DevTools = require("./components/DevTools").default;
 }
 
 export class App extends Component {
@@ -27,7 +28,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({isMounted: true}); // eslint-disable-line
+    this.setState({ isMounted: true }); // eslint-disable-line
   }
 
   toggleAddPostSection = () => {
@@ -37,31 +38,32 @@ export class App extends Component {
   render() {
     return (
       <div>
-        {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
+        {this.state.isMounted &&
+          !window.devToolsExtension &&
+          process.env.NODE_ENV === "development" && <DevTools />}
         <div>
           <Helmet
             title="MERN Starter - Blog App"
             titleTemplate="%s - Blog App"
             meta={[
-              { charset: 'utf-8' },
+              { charset: "utf-8" },
               {
-                'http-equiv': 'X-UA-Compatible',
-                content: 'IE=edge',
+                "http-equiv": "X-UA-Compatible",
+                content: "IE=edge"
               },
               {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1',
-              },
+                name: "viewport",
+                content: "width=device-width, initial-scale=1"
+              }
             ]}
           />
+          <Navigation />
           <Header
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
             toggleAddPost={this.toggleAddPostSection}
           />
-          <div className={styles.container}>
-            {this.props.children}
-          </div>
+          <div className={styles.container}>{this.props.children}</div>
           <Footer />
         </div>
       </div>
@@ -72,13 +74,13 @@ export class App extends Component {
 App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired
 };
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
-    intl: store.intl,
+    intl: store.intl
   };
 }
 
